@@ -5,33 +5,36 @@ import CommentSection from "../CommentSection/CommentSectionContainer";
 import LikeSection from "./LikeSection";
 import PostHeader from "./PostHeader";
 
-
 import "./Posts.css";
 
 const Post = props => {
   // set up state for the likes
-  const [likes, setLikes] = useState(props.postData.likes);
-  const likePost = () => {
-    setLikes(likes => likes + 1);
-  }
+  const [likes, setLikes] = useState(props.post.likes);
+
+
+function Add(){
+  setLikes(likes + 1)
+}
 
   return (
     <div className="post-border">
       <PostHeader
-        username={props.postData.username}
-        thumbnailUrl={props.postData.thumbnailUrl}
+        username={props.post.username}
+        thumbnailUrl={
+          props.post.thumbnailUrl
+        }
       />
       <div className="post-image-wrapper">
         <img
           alt="post thumbnail"
           className="post-image"
-          src={props.postData.imageUrl}
+          src={props.post.imageUrl}
         />
       </div>
-      <LikeSection likePost = {likePost} likes={likes}/>
+      <LikeSection likes={likes} add={Add}/>
       <CommentSection
-        postId={props.postData.imageUrl}
-        comments={props.postData.comments}
+        postId={props.post.imageUrl}
+        comments={props.post.comments}
       />
     </div>
   );
