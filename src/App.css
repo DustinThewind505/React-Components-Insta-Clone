@@ -1,32 +1,29 @@
-.App {
-  text-align: center;
-}
+/* 
+Start here and then work through the 
+PostsContainer components and the CommentSection Components. 
+Not all files need code added. 
+Look at each file to see where you need to pass props or add code 
+*/
+import React, { useState } from "react";
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+import SearchBar from "./components/SearchBar/SearchBarContainer";
+import PostsPage from "./components/PostsContainer/PostsPage";
+import Data from "./dummy-data"
+import "./App.css";
+// import the PostsPage and SearchBar and add them to the App
+// import dummydata
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
+const App = () => {
 
-.App-title {
-  font-size: 1.5em;
-}
+  const [data, setData] = useState(Data);
+  // set up state for the dummy data and pass to your PostsPage
+  return (
+    <div className="App">
+      <SearchBar />
+      <PostsPage data={data}/>
+      {/* Add components here  and pass props where appropriate */}
+    </div>
+  );
+};
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+export default App;
